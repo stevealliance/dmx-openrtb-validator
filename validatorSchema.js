@@ -80,6 +80,48 @@ const imp = Joi.object({
     secure: Joi.number().valid(0, 1)
 }).pattern('banner', banner).pattern('video', video).pattern('audio', audio).pattern('native', native)
 
+const publisher = Joi.object({
+    id: Joi.string(),
+    name: Joi.string(),
+    cat: Joi.array().items(Joi.string()),
+    domain: Joi.string().domain(),
+    ext: Joi.object().unknown()
+})
+
+const site = Joi.object({
+    id: Joi.string(),
+    name: Joi.string(),
+    page: Joi.string(),
+    domain: Joi.string().domain(),
+    ref: Joi.string(),
+    cat: Joi.array().items(Joi.string()),
+    sectioncat: Joi.array().items(Joi.string()),
+    pagecat: Joi.array().items(Joi.string()),
+    ver: Joi.string(),
+    privacypolicy: Joi.number().strict().valid(0, 1),
+    paid: Joi.number().strict().valid(0, 1),
+    ext: Joi.object().unknown(),
+    content: Joi.object().unknown(),
+    mobile: Joi.number().strict().valid(0, 1),
+    search: Joi.string()
+}).pattern('publisher', publisher)
+
+const app = Joi.object({
+    id: Joi.string(),
+    name: Joi.string(),
+    bundle: Joi.string(),
+    domain: Joi.string().domain(),
+    storeurl: Joi.string(),
+    cat: Joi.array().items(Joi.string()),
+    sectioncat: Joi.array().items(Joi.string()),
+    pagecat: Joi.array().items(Joi.string()),
+    ver: Joi.string(),
+    privacypolicy: Joi.number().strict().valid(0, 1),
+    paid: Joi.number().strict().valid(0, 1),
+    ext: Joi.object().unknown(),
+    content: Joi.object().unknown(),
+    keywords: Joi.string()
+}).pattern('publisher', publisher)
 
 const schema = Joi.object({
     ext: Joi.object({
@@ -89,13 +131,6 @@ const schema = Joi.object({
     at: Joi.number().valid(1, 2, 3),
     id: Joi.string().min(10).required(),
     name: Joi.number(),
-    site: Joi.object({
-        domain: Joi.string().domain().required(),
-        page: Joi.string().required(),
-        publisher: Joi.object({
-            id: Joi.string().required()
-        }).required().unknown()
-    }).required().unknown(),
     imp: Joi.array().items(imp).required(),
     regs: Joi.object({
         coppa: Joi.number().valid(0, 1),
@@ -118,6 +153,6 @@ const schema = Joi.object({
     }).unknown(),
     cur: Joi.array().items(Joi.string()),
     tmax: Joi.number()
-}).unknown()
+}).pattern('app', app).pattern('site', site).unknown()
 
 module.exports = { schema }
