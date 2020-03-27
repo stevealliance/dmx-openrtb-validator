@@ -20,5 +20,5 @@ This command to run the server
 node server.js
 ```
 
-This will exposed the port 5004, server URL http://localhost:5004
+This will expose the port 5004, server URL http://localhost:5004
 
