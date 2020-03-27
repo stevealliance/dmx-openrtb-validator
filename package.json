@@ -1,0 +1,24 @@
+{
+  "name": "dmx-openrtb-validator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevealliance/dmx-openrtb-validator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevealliance/dmx-openrtb-validator/issues"
+  },
+  "homepage": "https://github.com/stevealliance/dmx-openrtb-validator#readme",
+  "dependencies": {
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1"
+  }
+}
